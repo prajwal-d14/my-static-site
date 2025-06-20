@@ -3,7 +3,7 @@ pipeline {
 
 		environment {
 			AWS_REGION = 'ap-south-1'
-				S3_BUCKET = 'my-static-site'
+				S3_BUCKET = 'demo-14-static'
 		}
 
 	stages {
