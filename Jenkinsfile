@@ -1,0 +1,36 @@
+pipeline {
+	agent none
+
+		environment {
+			AWS_REGION = 'ap-south-1'
+				S3_BUCKET = 'my-static-site'
+		}
+
+	stages {
+		stage('Checkout Code') {
+			agent { label 'compile' }
+			steps {
+				git 'https://github.com/yourname/my-static-site.git'
+			}
+		}
+
+		stage('Upload to S3') {
+			agent { label 'compile' }
+			steps {
+				sh '''
+					aws s3 sync . s3://$S3_BUCKET/ \
+					--region $AWS_REGION
+					'''
+			}
+		}
+	}
+
+	post {
+		success {
+			echo "Website successfully deployed to S3"
+		}
+		failure {
+			echo "Deployment failed"
+		}
+	}
+}
