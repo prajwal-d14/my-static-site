@@ -3,14 +3,14 @@ pipeline {
 
 		environment {
 			AWS_REGION = 'ap-south-1'
-				S3_BUCKET = 'my-static-site'
+				S3_BUCKET = 'demo-14-static'
 		}
 
 	stages {
 		stage('Checkout Code') {
 			agent { label 'compile' }
 			steps {
-				git 'https://github.com/yourname/my-static-site.git'
+				git branch: 'main', url: 'https://github.com/prajwal-d14/my-static-site.git'
 			}
 		}
 
