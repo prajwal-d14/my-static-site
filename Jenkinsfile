@@ -18,7 +18,7 @@ pipeline {
 			agent { label 'compile' }
 			steps {
 				sh '''
-					aws s3 sync . s3://$S3_BUCKET/ \
+					aws s3 sync /home/ubuntu/my-static-site s3://$S3_BUCKET/ \
 					--region $AWS_REGION
 					'''
 			}
