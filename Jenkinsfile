@@ -10,7 +10,7 @@ pipeline {
 		stage('Checkout Code') {
 			agent { label 'compile' }
 			steps {
-				git 'https://github.com/prajwal-d14/my-static-site.git'
+				git branch: 'main', url: 'https://github.com/prajwal-d14/my-static-site.git'
 			}
 		}
 
